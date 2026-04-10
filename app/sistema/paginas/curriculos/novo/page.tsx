@@ -1,80 +1,111 @@
-import Image from "next/image"
-import Link from "next/link"
+"use client"
 
-export const CURRICULOS = [
-    {
-        id: 1,
-        nomeCompleto: "Café Pingado",
-        idade: "Café com um pouco de leite, perfeito para começar o dia.",
-        profissão: 10.95,
-        email:"john.doe@example.com",
-        imagem: "/cappuccino.jpg"
+import { useState } from "react";
 
-    },
-    {
-        id: 2,
-        nomeCompleto: "Monster",
-        idade: "Energético para te dar aquele boost de energia quando mais precisar.",
-        profissão: 8.75,
-        email:"jane.smith@example.com",
-        imagem: "/monster.jpg"
+export default function CadastrarCurriculo() {
+    const [formData, setFormData] = useState({
+        nomeCompleto: "",
+        idade: "",
+        profissao: "",
+        email: "",
+        imagem: "",
+    });
+    const [submitted, setSubmitted] = useState(false);
 
-    }, {
-        id: 3,
-        nomeCompleto: "Pizza",
-        idade: "Pizza de calabresa, com borda recheada de catupiry, perfeita para compartilhar com os amigos.",
-        profissão: 15.55,
-        email:"bob.johnson@example.com",
-        imagem: "/pizza.jpg"
-    },{
-        id: 4,
-        nomeCompleto: "Escondidinho",
-        idade: " Escondidinho de frango, com purê de batata cremoso, tão bom que ninguém acha.",
-        profissão: 18.25,
-        email:"alice.wonderland@example.com",
-        imagem: "/escondidinho.jpg"
-    },{
-        id: 5,
-        nomeCompleto:"Sorvete",
-        idade: "Sorvete de chocolate, cremoso e irresistível, perfeito para se refrescar nos dias quentes.",
-        profissão: 12.38,
-        email:"eve.adams@example.com",
-        imagem: "/sorvete.jpg"
-    }
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
-]
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setSubmitted(true);
+    };
 
-export default function PaginaCurriculo() {
     return (
-        <section className="mx-auto max-w-5xl px-6 py-12 bg-cyan-50">
-            <h1 className="text-3xl md:text-4xl font-semibold text-amber-900 text-center mb-10
-            bg-amber-200 p-4 rounded-lg">
-                Lista de Currículos
-            </h1>
-            {CURRICULOS.map((curriculo) => (
-                <div key={curriculo.id}
-                    className="bg-amber-200-300 rounded-2xl shadow-sm p-6 md:p-8 flex flex-col md:flex-row 
-                            items-center gap-6 mb-6">
-                    <div className="w-24 h-24 flex items-center justify-center bg-gray-100 rounded-xl">
-                        <Image src={curriculo.imagem} alt={curriculo.nomeCompleto} width={50} height={50}
-                            className="object-contain transition-transform duration-300 hover:scale-110"
+        <div className="mx-auto max-w-5xl px-6 py-12">
+            <section className="mb-12 rounded-3xl border border-amber-200 bg-amber-50 p-8 shadow-sm">
+                <h1 className="text-3xl font-bold text-amber-900 mb-4">Cadastrar Currículo</h1>
+                <p className="text-gray-700 mb-6">
+                    Preencha os dados abaixo para adicionar um novo currículo à lista.
+                </p>
+                <form className="grid gap-4" onSubmit={handleSubmit}>
+                    <label className="flex flex-col gap-2 text-sm font-medium text-amber-900">
+                        Nome Completo
+                        <input
+                            name="nomeCompleto"
+                            value={formData.nomeCompleto}
+                            onChange={handleChange}
+                            className="rounded-xl border border-amber-300 bg-white px-4 py-3 text-gray-900 outline-none focus:border-amber-500"
+                            placeholder="Nome do candidato"
+                            required
                         />
+                    </label>
+                    <label className="flex flex-col gap-2 text-sm font-medium text-amber-900">
+                        Idade
+                        <input
+                            name="idade"
+                            value={formData.idade}
+                            onChange={handleChange}
+                            className="rounded-xl border border-amber-300 bg-white px-4 py-3 text-gray-900 outline-none focus:border-amber-500"
+                            placeholder="Ex: 28 anos, desenvolvedor frontend"
+                            required
+                        />
+                    </label>
+                    <label className="flex flex-col gap-2 text-sm font-medium text-amber-900">
+                        Resumo e valor pretendido
+                        <input
+                            name="profissao"
+                            value={formData.profissao}
+                            onChange={handleChange}
+                            className="rounded-xl border border-amber-300 bg-white px-4 py-3 text-gray-900 outline-none focus:border-amber-500"
+                            placeholder="Ex: 12.50"
+                            required
+                        />
+                    </label>
+                    <label className="flex flex-col gap-2 text-sm font-medium text-amber-900">
+                        Email
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="rounded-xl border border-amber-300 bg-white px-4 py-3 text-gray-900 outline-none focus:border-amber-500"
+                            placeholder="Ex: john.doe@example.com"
+                            required
+                        />
+                    </label>
+                    <label className="flex flex-col gap-2 text-sm font-medium text-amber-900">
+                        URL da imagem
+                        <input
+                            name="imagem"
+                            value={formData.imagem}
+                            onChange={handleChange}
+                            className="rounded-xl border border-amber-300 bg-white px-4 py-3 text-gray-900 outline-none focus:border-amber-500"
+                            placeholder="/foto.jpg"
+                        />
+                    </label>
+                    <button
+                        type="submit"
+                        className="self-start rounded-full bg-amber-900 px-6 py-3 text-white transition hover:bg-amber-700"
+                    >
+                        Enviar currículo
+                    </button>
+                </form>
+                {submitted && (
+                    <div className="mt-6 rounded-2xl bg-amber-100 p-4 text-amber-900">
+                        Currículo enviado com sucesso! Dados recebidos:
+                        <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-amber-900">
+                            <li>Nome: {formData.nomeCompleto}</li>
+                            <li>Resumo / Idade: {formData.idade}</li>
+                            <li>Valor / Profissão: {formData.profissao}</li>
+                            <li>Imagem: {formData.imagem || "Não informado"}</li>
+                        </ul>
                     </div>
-                    <div className="flex-1 text-center md:text-left">
-                        <h3 className="text-xl font-semibold text-amber-900 mb-2"> {curriculo.nomeCompleto} </h3>
-                        <p className="text-amber-500 text-sm mb-1"> {curriculo.idade} </p>
-                        <p className="text-lg font-bold text-amber-900 mt-2"> R$ {curriculo.profissão.toFixed(2)} </p>
-                    </div>
-                    <div className="w-full md:w-auto">
-                        <Link
-                            className="w-full md:w-auto bg-amber-900 text-white px-6 py-3 
-                            rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors"
-                            href={`/sistema/paginas/curriculos/${curriculo.id}`}>
-                            Ver detalhes do currículo
-                        </Link>
-                    </div>
-                </div>
-            ))}
-        </section>
-    )
+                )}
+            </section>
+
+        </div>
+    );
 }
+
