@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
-
-export const CURRICULOS = [
+import { CURRICULOS } from "./curriculosData"
+[
     {
         id: 1,
         nomeCompleto: "Café Pingado",

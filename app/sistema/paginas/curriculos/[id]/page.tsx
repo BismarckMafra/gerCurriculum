@@ -1,4 +1,4 @@
-import { CURRICULOS } from "../page"
+import { CURRICULOS } from "../curriculosData"
 import Image from "next/image"
 
 export default function PaginaItemCurriculo({ params }:
