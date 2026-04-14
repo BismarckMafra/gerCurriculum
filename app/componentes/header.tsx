@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react";
+import Image from "next/image";
 import Nav from "./nav"
 import { Menu, X } from "lucide-react";
 
@@ -11,18 +12,20 @@ export default function Header() {
     return (
         <header className=" sticky top-0 z-50 w-full  border-b border-amber-700 bg-amber-200/40 p-6">
             <div className="mx-auto">
-                <div className="text-xl font-bold text-amber-950">
-                    (Logo aqui)
+                <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3 text-amber-950">
+                        <Image src="/Logo.jpg" alt="Logo da empresa" width={150} height={90} className="rounded" />
+                    </div>
+                    <Nav />
+                    <button
+                        className="flex md:hidden min-h-11 min-w-11 items-center"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-expanded={isMenuOpen}
+                        aria-label="Abrir Menu"
+                    >
+                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
                 </div>
-                <Nav />
-                <button
-                    className="flex md:hidden min-h-11 min-w-11 items-center"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    aria-expanded={isMenuOpen}
-                    aria-label="Abrir Menu"
-                >
-                    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
                 {isMenuOpen && (
                     <div className={`fixed inset-0 z-50 bg-black bg-opacity-50 ${isMenuOpen ? "block" : "hidden"}`}>
                         <div className={`fixed top-0 left-0 h-full w-64 bg-amber-200 p-6 transform transition-transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>

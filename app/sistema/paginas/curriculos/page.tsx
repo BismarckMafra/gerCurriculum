@@ -1,13 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
-
-export const CURRICULOS = [
+import { CURRICULOS } from "./curriculosData"
+[
     {
         id: 1,
         nomeCompleto: "Café Pingado",
         idade: "Café com um pouco de leite, perfeito para começar o dia.",
-        profissão: 10.95,
-        email:"john.doe@example.com",
+        resumo: 10.95,
+        valorPretendido: 10.95,
+        email: "john.doe@example.com",
         imagem: "/cappuccino.jpg"
 
     },
@@ -15,30 +16,34 @@ export const CURRICULOS = [
         id: 2,
         nomeCompleto: "Monster",
         idade: "Energético para te dar aquele boost de energia quando mais precisar.",
-        profissão: 8.75,
-        email:"jane.smith@example.com",
+        resumo: 10.95,
+        valorPretendido: 10.95,
+        email: "jane.smith@example.com",
         imagem: "/monster.jpg"
 
     }, {
         id: 3,
         nomeCompleto: "Pizza",
         idade: "Pizza de calabresa, com borda recheada de catupiry, perfeita para compartilhar com os amigos.",
-        profissão: 15.55,
-        email:"bob.johnson@example.com",
+        resumo: 25.50,
+        valorPretendido: 25.50,
+        email: "bob.johnson@example.com",
         imagem: "/pizza.jpg"
-    },{
+    }, {
         id: 4,
         nomeCompleto: "Escondidinho",
         idade: " Escondidinho de frango, com purê de batata cremoso, tão bom que ninguém acha.",
-        profissão: 18.25,
-        email:"alice.wonderland@example.com",
+        resumo: 18.25,
+        valorPretendido: 18.25,
+        email: "alice.wonderland@example.com",
         imagem: "/escondidinho.jpg"
-    },{
+    }, {
         id: 5,
-        nomeCompleto:"Sorvete",
+        nomeCompleto: "Sorvete",
         idade: "Sorvete de chocolate, cremoso e irresistível, perfeito para se refrescar nos dias quentes.",
-        profissão: 12.38,
-        email:"eve.adams@example.com",
+        resumo: 12.38,
+        valorPretendido: 12.38,
+        email: "eve.adams@example.com",
         imagem: "/sorvete.jpg"
     }
 
@@ -63,7 +68,7 @@ export default function PaginaCurriculo() {
                     <div className="flex-1 text-center md:text-left">
                         <h3 className="text-xl font-semibold text-amber-900 mb-2"> {curriculo.nomeCompleto} </h3>
                         <p className="text-amber-500 text-sm mb-1"> {curriculo.idade} </p>
-                        <p className="text-lg font-bold text-amber-900 mt-2"> R$ {curriculo.profissão.toFixed(2)} </p>
+                        <p className="text-lg font-bold text-amber-900 mt-2"> R$ {curriculo.valorPretendido.toFixed(2)} </p>
                     </div>
                     <div className="w-full md:w-auto">
                         <Link
