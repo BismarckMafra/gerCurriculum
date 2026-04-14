@@ -24,7 +24,7 @@ export default function PaginaItemCurriculo({ params }:
       <div className="flex-1 text-center md:text-left">
         <h3 className="text-xl font-semibold text-amber-900 mb-2"> {curriculo.nomeCompleto} </h3>
         <p className="text-amber-500 text-sm mb-1"> {curriculo.idade} </p>
-        <p className="text-lg font-bold text-amber-900 mt-2"> R$ {curriculo.profissão.toFixed(2)} </p>
+        <p className="text-lg font-bold text-amber-900 mt-2"> R$ {curriculo.valorPretendido.toFixed(2)} </p>
       </div>
     </div>
   );
