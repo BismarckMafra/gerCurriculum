@@ -6,11 +6,7 @@ import { CURRICULOS } from "./curriculosData"
         id: 1,
         nomeCompleto: "Café Pingado",
         idade: "Café com um pouco de leite, perfeito para começar o dia.",
-        resumo: 10.95,
-        valorPretendido: 10.95,
-        email: "john.doe@example.com",
-        telefone_celular: "(11) 91234-5678",
-        cep: "12345-678",
+
         imagem: "/cappuccino.jpg"
 
     },
@@ -18,45 +14,27 @@ import { CURRICULOS } from "./curriculosData"
         id: 2,
         nomeCompleto: "Monster",
         idade: "Energético para te dar aquele boost de energia quando mais precisar.",
-        resumo: 10.95,
-        valorPretendido: 10.95,
-        email: "jane.smith@example.com",
-        telefone_celular: "(11) 91234-5678",
-        cep: "12345-678",
         imagem: "/monster.jpg"
 
     }, {
         id: 3,
         nomeCompleto: "Pizza",
         idade: "Pizza de calabresa, com borda recheada de catupiry, perfeita para compartilhar com os amigos.",
-        resumo: 25.50,
-        valorPretendido: 25.50,
-        email: "bob.johnson@example.com",
-        telefone_celular: "(11) 91234-5678",
-        cep: "12345-678",
+
         imagem: "/pizza.jpg"
-    }, {
+    },{
         id: 4,
         nomeCompleto: "Escondidinho",
         idade: " Escondidinho de frango, com purê de batata cremoso, tão bom que ninguém acha.",
-        resumo: 18.25,
-        valorPretendido: 18.25,
-        email: "alice.wonderland@example.com",
-        telefone_celular: "(11) 91234-5678",
-        cep: "12345-678",
+
         imagem: "/escondidinho.jpg"
-    }, {
+    },{
         id: 5,
-        nomeCompleto: "Sorvete",
+        nomeCompleto:"Sorvete",
         idade: "Sorvete de chocolate, cremoso e irresistível, perfeito para se refrescar nos dias quentes.",
-        resumo: 12.38,
-        valorPretendido: 12.38,
-        email: "eve.adams@example.com",
-        telefone_celular: "(11) 91234-5678",
-        cep: "12345-678",
+
         imagem: "/sorvete.jpg"
     }
-
 ]
 
 export default function PaginaCurriculo() {
@@ -68,8 +46,7 @@ export default function PaginaCurriculo() {
             </h1>
             {CURRICULOS.map((curriculo) => (
                 <div key={curriculo.id}
-                    className="bg-amber-200-300 rounded-2xl shadow-sm p-6 md:p-8 flex flex-col md:flex-row 
-                            items-center gap-6 mb-6">
+                    className="bg-amber-200-300 rounded-2xl shadow-sm p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 mb-6">
                     <div className="w-24 h-24 flex items-center justify-center bg-gray-100 rounded-xl">
                         <Image src={curriculo.imagem} alt={curriculo.nomeCompleto} width={50} height={50}
                             className="object-contain transition-transform duration-300 hover:scale-110"
@@ -78,12 +55,11 @@ export default function PaginaCurriculo() {
                     <div className="flex-1 text-center md:text-left">
                         <h3 className="text-xl font-semibold text-amber-900 mb-2"> {curriculo.nomeCompleto} </h3>
                         <p className="text-amber-500 text-sm mb-1"> {curriculo.idade} </p>
-                        <p className="text-lg font-bold text-amber-900 mt-2"> R$ {curriculo.valorPretendido.toFixed(2)} </p>
+                        <p className="text-lg font-bold text-amber-900 mt-2"> R$ {curriculo.profissão.toFixed(2)} </p>
                     </div>
                     <div className="w-full md:w-auto">
                         <Link
-                            className="w-full md:w-auto bg-amber-900 text-white px-6 py-3 
-                            rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors"
+                            className="w-full md:w-auto bg-amber-900 text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors"
                             href={`/sistema/paginas/curriculos/${curriculo.id}`}>
                             Ver detalhes do currículo
                         </Link>
