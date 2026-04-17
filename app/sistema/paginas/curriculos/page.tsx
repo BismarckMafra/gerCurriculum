@@ -6,8 +6,7 @@ import { CURRICULOS } from "./curriculosData"
         id: 1,
         nomeCompleto: "Café Pingado",
         idade: "Café com um pouco de leite, perfeito para começar o dia.",
-        profissão: 10.95,
-        email:"john.doe@example.com",
+
         imagem: "/cappuccino.jpg"
 
     },
@@ -15,30 +14,25 @@ import { CURRICULOS } from "./curriculosData"
         id: 2,
         nomeCompleto: "Monster",
         idade: "Energético para te dar aquele boost de energia quando mais precisar.",
-        profissão: 8.75,
-        email:"jane.smith@example.com",
         imagem: "/monster.jpg"
 
     }, {
         id: 3,
         nomeCompleto: "Pizza",
         idade: "Pizza de calabresa, com borda recheada de catupiry, perfeita para compartilhar com os amigos.",
-        profissão: 15.55,
-        email:"bob.johnson@example.com",
+
         imagem: "/pizza.jpg"
     },{
         id: 4,
         nomeCompleto: "Escondidinho",
         idade: " Escondidinho de frango, com purê de batata cremoso, tão bom que ninguém acha.",
-        profissão: 18.25,
-        email:"alice.wonderland@example.com",
+
         imagem: "/escondidinho.jpg"
     },{
         id: 5,
         nomeCompleto:"Sorvete",
         idade: "Sorvete de chocolate, cremoso e irresistível, perfeito para se refrescar nos dias quentes.",
-        profissão: 12.38,
-        email:"eve.adams@example.com",
+
         imagem: "/sorvete.jpg"
     }
 ]

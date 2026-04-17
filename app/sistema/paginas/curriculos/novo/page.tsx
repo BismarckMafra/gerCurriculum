@@ -1,24 +1,28 @@
 ﻿"use client"
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent  } from "react";
 import { toast, Toaster } from "sonner";
 
 type UsuarioDados = {
     nomeCompleto: string;
     idade: string;
+    telefone_celular: string;
+    email: string;
+    endereco: string;
     resumo: string;
     valorPretendido: string;
     profissao: string;
-    email: string;
     imagem: string;
 };
 
 const initialFormData: UsuarioDados = {
     nomeCompleto: "",
     idade: "",
+    telefone_celular: "",
+    email: "",
+    endereco: "",
     resumo: "",
     valorPretendido: "",
     profissao: "",
-    email: "",
     imagem: "",
 };
 
@@ -38,9 +42,9 @@ export default function CadastrarCurriculo() {
     };
 
     return (
-        <section className="p-8">
+        <section className="p-8 mt-35">
             <h1 className="text-4xl font-bold text-amber-500 text-center">
-                TELA DE CADASTRO
+                TELA DE CADASTRO!
             </h1>
             <div className="max-w-full min-h-screen bg-amber-120 border-4 border-white-800 rounded mt-4">
                 <h3 className="text-xl ml-8 mt-4 font-bold text-shadow-amber-950">
@@ -62,7 +66,6 @@ export default function CadastrarCurriculo() {
                                     className="text-black mt-2 w-full rounded-lg border border-amber bg-white px-3 py-2"
                                 />
                             </label>
-
                             <label className="block mb-4">
                                 <span className="text-sm font-medium">Idade</span>
                                 <input
@@ -73,7 +76,36 @@ export default function CadastrarCurriculo() {
                                     className="text-black mt-2 w-full rounded-lg border border-amber bg-white px-3 py-2"
                                 />
                             </label>
-
+                            <label className="block mb-4">
+                                <span className="text-sm font-medium">Telefone / Celular</span>
+                                <input
+                                    name="telefone_celular"
+                                    placeholder="Seu telefone celular"
+                                    value={formData.telefone_celular}
+                                    onChange={handleChange}
+                                    className="text-black mt-2 w-full rounded-lg border border-amber bg-white px-3 py-2"
+                                />
+                            </label>
+                            <label className="block mb-4">
+                                <span className="text-sm font-medium">Email</span>
+                                <input
+                                    name="email"
+                                    placeholder="Seu email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    className="text-black mt-2 w-full rounded-lg border border-amber bg-white px-3 py-2"
+                                />
+                            </label>
+                            <label className="block mb-4">
+                                <span className="text-sm font-medium"> Seu endereço</span>
+                                <input
+                                    name="endereco"
+                                    placeholder="endereco"
+                                    value={formData.endereco}
+                                    onChange={handleChange}
+                                    className="text-black mt-2 w-full rounded-lg border border-amber bg-white px-3 py-2"
+                                />
+                            </label>
                             <label className="block mb-4">
                                 <span className="text-sm font-medium ">Resumo</span>
                                 <textarea
@@ -84,7 +116,6 @@ export default function CadastrarCurriculo() {
                                     className="text-black mt-2 w-full min-h-22.5 rounded-lg border border-white bg-white px-3 py-2"
                                 />
                             </label>
-
                             <label className="block mb-4">
                                 <span className="text-sm font-medium">Valor Pretendido</span>
                                 <input
@@ -95,7 +126,6 @@ export default function CadastrarCurriculo() {
                                     className="text-black mt-2 w-full rounded-lg border border-amber bg-white px-3 py-2"
                                 />
                             </label>
-
                             <label className="block mb-4">
                                 <span className="text-sm font-medium">Profissão</span>
                                 <input
@@ -106,19 +136,6 @@ export default function CadastrarCurriculo() {
                                     className="text-black mt-2 w-full rounded-lg border border-amber bg-white px-3 py-2"
                                 />
                             </label>
-
-                            <label className="block mb-4">
-                                <span className="text-sm font-medium">Email</span>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="Seu email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    className="text-black mt-2 w-full rounded-lg border border-amber bg-white px-3 py-2"
-                                />
-                            </label>
-
                             <label className="block mb-4">
                                 <span className="text-sm font-medium">Imagem</span>
                                 <input
@@ -127,18 +144,16 @@ export default function CadastrarCurriculo() {
                                     value={formData.imagem}
                                     onChange={handleChange}
                                     className="text-black mt-2 w-full rounded-lg bg-white border border-amberbg-white px-3 py-2"
-                                   
                                 />
                             </label>
                         </fieldset>
                     </div>
-
                     <div className="text-center mt-6">
                         <button
                             type="submit"
                             className="rounded-2xl bg-gray-800 px-8 py-3 text-amber-100 transition hover:bg-gray-700"
                         >
-                            CADASTRE-SE AGORA
+                            CADASTRE-SE AGORA!
                         </button>
                     </div>
                 </form>
@@ -149,16 +164,18 @@ export default function CadastrarCurriculo() {
                         <ul className="list-disc pl-5 space-y-1">
                             <li>Nome: {formData.nomeCompleto}</li>
                             <li>Idade: {formData.idade}</li>
+                            <li>Telefone: {formData.telefone_celular}</li>
+                            <li>Email: {formData.email}</li>
+                            <li>Endereco: {formData.endereco}</li>
                             <li>Resumo: {formData.resumo}</li>
                             <li>Valor Pretendido: {formData.valorPretendido}</li>
                             <li>Profissão: {formData.profissao}</li>
-                            <li>Email: {formData.email}</li>
                             <li>Imagem: {formData.imagem || "Não informado"}</li>
                         </ul>
                     </div>
                 )}
 
-                <Toaster position="top-right" />
+                <Toaster position="top-center" />
             </div>
         </section>
     );
