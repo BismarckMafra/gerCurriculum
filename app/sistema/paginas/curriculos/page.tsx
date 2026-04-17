@@ -9,6 +9,8 @@ import { CURRICULOS } from "./curriculosData"
         resumo: 10.95,
         valorPretendido: 10.95,
         email: "john.doe@example.com",
+        telefone_celular: "(11) 91234-5678",
+        cep: "12345-678",
         imagem: "/cappuccino.jpg"
 
     },
@@ -19,6 +21,8 @@ import { CURRICULOS } from "./curriculosData"
         resumo: 10.95,
         valorPretendido: 10.95,
         email: "jane.smith@example.com",
+        telefone_celular: "(11) 91234-5678",
+        cep: "12345-678",
         imagem: "/monster.jpg"
 
     }, {
@@ -28,6 +32,8 @@ import { CURRICULOS } from "./curriculosData"
         resumo: 25.50,
         valorPretendido: 25.50,
         email: "bob.johnson@example.com",
+        telefone_celular: "(11) 91234-5678",
+        cep: "12345-678",
         imagem: "/pizza.jpg"
     }, {
         id: 4,
@@ -36,6 +42,8 @@ import { CURRICULOS } from "./curriculosData"
         resumo: 18.25,
         valorPretendido: 18.25,
         email: "alice.wonderland@example.com",
+        telefone_celular: "(11) 91234-5678",
+        cep: "12345-678",
         imagem: "/escondidinho.jpg"
     }, {
         id: 5,
@@ -44,6 +52,8 @@ import { CURRICULOS } from "./curriculosData"
         resumo: 12.38,
         valorPretendido: 12.38,
         email: "eve.adams@example.com",
+        telefone_celular: "(11) 91234-5678",
+        cep: "12345-678",
         imagem: "/sorvete.jpg"
     }
 
