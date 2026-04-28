@@ -3,6 +3,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { MapPin } from "lucide-react";
+
 export default function Footer() {
   return (
     <footer className="w-full bg-amber-500 text-amber-950 mt-auto py-6">
@@ -16,12 +17,12 @@ export default function Footer() {
         {/* Endereço com ícone */}
         <p className="text-sm flex items-center gap-1 justify-center md:justify-start">
           <MapPin className="w-4 h-4" />
-          Rua Exemplo, 123 - Cidade, Estado - CEP 12345-678
+          Rua das Oportunidades, 123 - São Paulo - SP - CEP 12345-678
         </p>
 
         {/* Contato */}
         <p className="text-sm flex flex-col md:flex-row items-center gap-2 justify-center md:justify-start">
-          Telefone: (11) 1234-5678 | Email: exemplo@email.com
+          Telefone: (11) 1234-5678 | Email: gercv@email.com
         </p>
 
         {/* Redes sociais */}
@@ -46,7 +47,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="underline hover:text-black transition-colors text-sm"
           >
-            Ver no Google Maps
+            Veja no Google Maps
           </a>
         </div>
 

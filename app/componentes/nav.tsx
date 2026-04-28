@@ -6,9 +6,9 @@ export default function Nav(){
             <Link className="mr-4" href='/'> Home </Link>
             <Link className="mr-4" href='/paginas/contato'> Contatos </Link>
             <Link className="mr-4" href='/paginas/sobre'> Sobre a empresa </Link>
-             <Link className="mr-4" href='/sistema/paginas/curriculos/novo'> Cadastrar Currículos </Link>
-            <Link className="mr-4" href='/sistema/paginas/curriculos'> Lista de Currículos </Link>
-            <Link className="mr-4" href='/sistema/paginas/curriculos/1'> Currículo </Link>
+             <Link className="mr-4" href='/curriculos/cadastrar'> Cadastrar Currículos </Link>
+            <Link className="mr-4" href='/curriculos/visualizar'> Lista de Currículos </Link>
+            <Link className="mr-4" href='/curriculos/visualizar/id'> Currículo </Link>
         </div>
     )
 }

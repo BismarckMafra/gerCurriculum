@@ -1,10 +1,10 @@
 export const mascaraCampos = {
-    telefone_celular: {
-        mask: "(##) #####-####", // Mudou de 9 para #
-        placeholder: "(00) 00000-0000"
+    telefone: {
+        mask: "(##) #####-####",
+        placeholder: "(11) 98765-4321"
     },
-    cep: {
-        mask: "#####-###", // Mudou de 9 para #
-        placeholder: "00000-000"
+    email: {
+        mask: "",
+        placeholder: "seu.email@exemplo.com"
     }
 } as const;
