@@ -56,7 +56,7 @@ export default function Header() {
                                 <a href="/paginas/contato" className="text-amber-950" onClick={fecharMenu}>Contatos</a>
                                 <a href="/paginas/sobre" className="text-amber-950" onClick={fecharMenu}>Sobre a empresa</a>
                                 <a href="/sistema/paginas/curriculos" className="text-amber-950" onClick={fecharMenu}>Lista de Currículos</a>
-                                <a href="/sistema/paginas/curriculos/1" className="text-amber-950" onClick={fecharMenu}>Currículo</a>
+                                <a href="/sistema/paginas/curriculos/buscar" className="text-amber-950" onClick={fecharMenu}>Currículo</a>
                             </nav>
                         </div>
                     </div>

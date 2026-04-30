@@ -2,7 +2,7 @@ export type Curriculo = {
   id: number;
   nomeCompleto: string;
   idade: string;
-  resumo: number;
+  resumo: string;
   valorPretendido: number;
   email: string;
   imagem: string;
@@ -11,47 +11,47 @@ export type Curriculo = {
 export const CURRICULOS: Curriculo[] = [
   {
     id: 1,
-    nomeCompleto: "Café Pingado",
-    idade: "Café com um pouco de leite, perfeito para começar o dia.",
-    resumo: 10.95,
-    valorPretendido: 10.95,
-    email: "john.doe@example.com",
-    imagem: "/cappuccino.jpg",
+    nomeCompleto: "Ana Silva",
+    idade: "29 anos",
+    resumo: "Analista de marketing digital com 6 anos de experiência em campanhas de performance e automação.",
+    valorPretendido: 7200,
+    email: "ana.silva@example.com",
+    imagem: "/Logo.jpg",
   },
   {
     id: 2,
-    nomeCompleto: "Monster",
-    idade: "Energético para te dar aquele boost de energia quando mais precisar.",
-    resumo: 10.95,
-    valorPretendido: 10.95,
-    email: "jane.smith@example.com",
-    imagem: "/monster.jpg",
+    nomeCompleto: "Bruno Costa",
+    idade: "35 anos",
+    resumo: "Desenvolvedor front-end especializado em React e TypeScript, com foco em interfaces acessíveis e escaláveis.",
+    valorPretendido: 8500,
+    email: "bruno.costa@example.com",
+    imagem: "/Logo.jpg",
   },
   {
     id: 3,
-    nomeCompleto: "Pizza",
-    idade: "Pizza de calabresa, com borda recheada de catupiry, perfeita para compartilhar com os amigos.",
-    resumo: 25.5,
-    valorPretendido: 25.5,
-    email: "bob.johnson@example.com",
-    imagem: "/pizza.jpg",
+    nomeCompleto: "Carla Ferreira",
+    idade: "27 anos",
+    resumo: "Designer gráfico com experiência em branding, UX e projetos de identidade visual para startups.",
+    valorPretendido: 6000,
+    email: "carla.ferreira@example.com",
+    imagem: "/Logo.jpg",
   },
   {
     id: 4,
-    nomeCompleto: "Escondidinho",
-    idade: "Escondidinho de frango, com purê de batata cremoso, tão bom que ninguém acha.",
-    resumo: 18.25,
-    valorPretendido: 18.25,
-    email: "alice.wonderland@example.com",
-    imagem: "/escondidinho.jpg",
+    nomeCompleto: "Diego Almeida",
+    idade: "42 anos",
+    resumo: "Gerente de projetos com certificação PMP e histórico de entregas em times multidisciplinares.",
+    valorPretendido: 11000,
+    email: "diego.almeida@example.com",
+    imagem: "/Logo.jpg",
   },
   {
     id: 5,
-    nomeCompleto: "Sorvete",
-    idade: "Sorvete de chocolate, cremoso e irresistível, perfeito para se refrescar nos dias quentes.",
-    resumo: 12.38,
-    valorPretendido: 12.38,
-    email: "eve.adams@example.com",
-    imagem: "/sorvete.jpg",
+    nomeCompleto: "Elisa Nogueira",
+    idade: "31 anos",
+    resumo: "Especialista em recursos humanos com foco em recrutamento, desenvolvimento e retenção de talentos.",
+    valorPretendido: 6800,
+    email: "elisa.nogueira@example.com",
+    imagem: "/Logo.jpg",
   },
 ];

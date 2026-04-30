@@ -1,41 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { CURRICULOS } from "./curriculosData"
-[
-    {
-        id: 1,
-        nomeCompleto: "Café Pingado",
-        idade: "Café com um pouco de leite, perfeito para começar o dia.",
-
-        imagem: "/cappuccino.jpg"
-
-    },
-    {
-        id: 2,
-        nomeCompleto: "Monster",
-        idade: "Energético para te dar aquele boost de energia quando mais precisar.",
-        imagem: "/monster.jpg"
-
-    }, {
-        id: 3,
-        nomeCompleto: "Pizza",
-        idade: "Pizza de calabresa, com borda recheada de catupiry, perfeita para compartilhar com os amigos.",
-
-        imagem: "/pizza.jpg"
-    },{
-        id: 4,
-        nomeCompleto: "Escondidinho",
-        idade: " Escondidinho de frango, com purê de batata cremoso, tão bom que ninguém acha.",
-
-        imagem: "/escondidinho.jpg"
-    },{
-        id: 5,
-        nomeCompleto:"Sorvete",
-        idade: "Sorvete de chocolate, cremoso e irresistível, perfeito para se refrescar nos dias quentes.",
-
-        imagem: "/sorvete.jpg"
-    }
-]
 
 export default function PaginaCurriculo() {
     return (
@@ -55,7 +20,7 @@ export default function PaginaCurriculo() {
                     <div className="flex-1 text-center md:text-left">
                         <h3 className="text-xl font-semibold text-amber-900 mb-2"> {curriculo.nomeCompleto} </h3>
                         <p className="text-amber-500 text-sm mb-1"> {curriculo.idade} </p>
-                        <p className="text-lg font-bold text-amber-900 mt-2"> R$ {curriculo.profissão.toFixed(2)} </p>
+                        <p className="text-lg font-bold text-amber-900 mt-2"> R$ {curriculo.valorPretendido.toFixed(2)} </p>
                     </div>
                     <div className="w-full md:w-auto">
                         <Link
