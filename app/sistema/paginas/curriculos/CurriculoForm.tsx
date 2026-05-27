@@ -10,6 +10,7 @@ import type { CurriculoFormData, Experiencia } from "./types";
 import { MaskedControl } from "./utilitarios/mascaras/controladorMascaras";
 import { mascaraCampos } from "./utilitarios/mascaras/cadastroMascaras";
 import { cadastroSchema } from "./utilitarios/validacao";
+import { curriculo } from "./curriculosData";
 
 const emptyExperiencia: Experiencia = {
     cargo: "",

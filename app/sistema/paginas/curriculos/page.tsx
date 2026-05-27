@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Toaster } from "sonner";
-import { CURRICULOS } from "./curriculosData";
+import { curriculo } from "./curriculosData";
 
 export default function CurriculosPage() {
   return (
@@ -11,7 +11,7 @@ export default function CurriculosPage() {
       </h1>
 
       <div className="space-y-6">
-        {CURRICULOS.map((curriculo) => (
+        {curriculo.map((curriculo) => (
           <div
             key={curriculo.id}
             className="rounded-2xl shadow-sm p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 bg-white"

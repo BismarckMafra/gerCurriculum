@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { CURRICULOS } from "../curriculosData";
+import { curriculo } from "../curriculosData";
 
 export default function BuscarCurriculo() {
   const [query, setQuery] = useState("");
@@ -12,7 +12,7 @@ export default function BuscarCurriculo() {
   const resultados = useMemo(() => {
     const termo = submitted.trim().toLowerCase();
     if (!termo) return [];
-    return CURRICULOS.filter((curriculo) =>
+    return curriculo.filter((curriculo) =>
       curriculo.nomeCompleto.toLowerCase().includes(termo)
     );
   }, [submitted]);
@@ -21,10 +21,7 @@ export default function BuscarCurriculo() {
     <section className="mx-auto max-w-4xl px-6 pt-32 pb-10">
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-900/80">
-            Busca de currículo
-          </p>
-          <h1 className="mt-3 text-3xl font-bold text-amber-900">
+          <h1 className="mt-3 text-3xl  font-bold text-amber-900">
             Localize um candidato pelo nome
           </h1>
         </div>
@@ -73,7 +70,7 @@ export default function BuscarCurriculo() {
         ) : resultados.length === 0 ? (
           <div className="rounded-3xl border border-amber-100 bg-white p-8 shadow-sm">
             <p className="text-sm text-slate-600">
-              Nenhum candidato encontrado para "{submitted}".
+              Nenhum candidato encontrado para {submitted}.
             </p>
           </div>
         ) : (
@@ -81,13 +78,15 @@ export default function BuscarCurriculo() {
             <article key={curriculo.id} className="rounded-[32px] border border-amber-100 bg-amber-50 p-6 shadow-sm">
               <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
                 <div className="flex h-28 w-28 flex-none items-center justify-center rounded-3xl bg-white p-3 shadow-sm border border-amber-100">
-                  <Image
-                    src={curriculo.imagem}
-                    alt={curriculo.nomeCompleto}
-                    width={112}
-                    height={112}
-                    className="h-full w-full object-cover rounded-3xl"
-                  />
+                  {curriculo.imagem && (
+                    <Image
+                      src={curriculo.imagem}
+                      alt={curriculo.nomeCompleto}
+                      width={112}
+                      height={112}
+                      className="h-full w-full object-cover rounded-3xl"
+                    />
+                  )}
                 </div>
                 <div className="flex-1">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">

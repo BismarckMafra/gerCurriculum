@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast, Toaster } from "sonner";
 import { buscarCurriculoPorId, excluirCurriculo } from "@/services/curriculosService";
-import type { Curriculo } from "../types";
+import type { curriculo } from "../types";
 
 type CurriculoDetalheClientProps = {
     id: string;
@@ -13,7 +13,7 @@ type CurriculoDetalheClientProps = {
 
 export default function CurriculoDetalheClient({ id }: CurriculoDetalheClientProps) {
     const router = useRouter();
-    const [curriculo, setCurriculo] = useState<Curriculo | null>(null);
+    const [curriculo, setCurriculo] = useState<curriculo | null>(null);
     const [carregando, setCarregando] = useState(true);
     const [excluindo, setExcluindo] = useState(false);
 

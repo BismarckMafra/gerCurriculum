@@ -20,7 +20,7 @@ export type CurriculoFormData = {
   imagem: string;
 };
 
-export type Curriculo = CurriculoFormData & {
+export type curriculo = CurriculoFormData & {
   id: string;
   criadoEm?: Timestamp | Date | null;
 };
