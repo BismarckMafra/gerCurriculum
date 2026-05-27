@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image";
+import Link from "next/link";
 import Nav from "./nav"
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -43,7 +44,7 @@ export default function Header() {
                 </div>
                 {isMenuOpen && (
                     <div className={`text-amber-950 fixed inset-0 z-50 bg-black bg-opacity-50 ${isMenuOpen ? "block" : "hidden"}`}>
-                        <div className={ `text-amber-950 fixed top-0 left-0 h-full w-64 bg-amber-200 p-6 transform transition-transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>
+                        <div className={`text-amber-950 fixed top-0 left-0 h-full w-64 bg-amber-200 p-6 transform transition-transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>
                             <button
                                 className="mb-4"
                                 onClick={fecharMenu}
@@ -52,11 +53,11 @@ export default function Header() {
                                 <X size={24} />
                             </button>
                             <nav className="text-amber-950 flex flex-col space-y-4">
-                                <a href="/" className="text-amber-950" onClick={fecharMenu}>Home</a>
-                                <a href="/paginas/contato" className="text-amber-950" onClick={fecharMenu}>Contatos</a>
-                                <a href="/paginas/sobre" className="text-amber-950" onClick={fecharMenu}>Sobre a empresa</a>
-                                <a href="/sistema/paginas/curriculos" className="text-amber-950" onClick={fecharMenu}>Lista de Currículos</a>
-                                <a href="/sistema/paginas/curriculos/1" className="text-amber-950" onClick={fecharMenu}>Currículo</a>
+                                <Link href="/" className="text-amber-950" onClick={fecharMenu}>Home</Link>
+                                <Link href="/paginas/contato" className="text-amber-950" onClick={fecharMenu}>Contatos</Link>
+                                <Link href="/paginas/sobre" className="text-amber-950" onClick={fecharMenu}>Sobre a empresa</Link>
+                                <Link href="/sistema/paginas/curriculos" className="text-amber-950" onClick={fecharMenu}>Lista de Curriculos</Link>
+                                <Link href="/sistema/paginas/curriculos/novo" className="text-amber-950" onClick={fecharMenu}>Novo curriculo</Link>
                             </nav>
                         </div>
                     </div>
