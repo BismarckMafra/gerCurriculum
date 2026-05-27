@@ -12,8 +12,8 @@ export default function BuscarCurriculo() {
   const resultados = useMemo(() => {
     const termo = submitted.trim().toLowerCase();
     if (!termo) return [];
-    return curriculo.filter((curriculo) =>
-      curriculo.nomeCompleto.toLowerCase().includes(termo)
+    return curriculo.filter((item) =>
+      item.nomeCompleto.toLowerCase().includes(termo)
     );
   }, [submitted]);
 
@@ -74,14 +74,14 @@ export default function BuscarCurriculo() {
             </p>
           </div>
         ) : (
-          resultados.map((curriculo) => (
-            <article key={curriculo.id} className="rounded-[32px] border border-amber-100 bg-amber-50 p-6 shadow-sm">
+          resultados.map((item) => (
+            <article key={item.id} className="rounded-[32px] border border-amber-100 bg-amber-50 p-6 shadow-sm">
               <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
                 <div className="flex h-28 w-28 flex-none items-center justify-center rounded-3xl bg-white p-3 shadow-sm border border-amber-100">
-                  {curriculo.imagem && (
+                  {item.imagem && (
                     <Image
-                      src={curriculo.imagem}
-                      alt={curriculo.nomeCompleto}
+                      src={item.imagem}
+                      alt={item.nomeCompleto}
                       width={112}
                       height={112}
                       className="h-full w-full object-cover rounded-3xl"
@@ -95,11 +95,11 @@ export default function BuscarCurriculo() {
                         Candidato
                       </p>
                       <h2 className="mt-2 text-2xl font-bold text-amber-900">
-                        {curriculo.nomeCompleto}
+                        {item.nomeCompleto}
                       </h2>
                     </div>
                     <Link
-                      href={`/sistema/paginas/curriculos/${curriculo.id}`}
+                      href={`/sistema/paginas/curriculos/${item.id}`}
                       className="inline-flex items-center rounded-full bg-amber-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-amber-800"
                     >
                       Ver detalhes
@@ -111,7 +111,7 @@ export default function BuscarCurriculo() {
                         Idade
                       </p>
                       <p className="mt-2 text-sm font-semibold text-slate-900">
-                        {curriculo.idade}
+                        {item.idade}
                       </p>
                     </div>
                     <div className="rounded-3xl border border-amber-100 bg-white p-4">
@@ -119,14 +119,14 @@ export default function BuscarCurriculo() {
                         Pretensão salarial
                       </p>
                       <p className="mt-2 text-sm font-semibold text-slate-900">
-                        R$ {curriculo.valorPretendido.toFixed(2)}
+                        R$ {item.valorPretendido.toFixed(2)}
                       </p>
                     </div>
                   </div>
                   <div className="mt-5 rounded-3xl border border-amber-100 bg-white p-5">
                     <p className="text-xs uppercase tracking-[0.2em] text-amber-900/80">Resumo profissional</p>
                     <p className="mt-3 text-sm leading-7 text-slate-700">
-                      {curriculo.resumo}
+                      {item.resumo}
                     </p>
                   </div>
                 </div>

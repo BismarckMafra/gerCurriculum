@@ -46,7 +46,7 @@ export default function CurriculoDetalheClient({ id }: CurriculoDetalheClientPro
 
         try {
             setExcluindo(true);
-            await excluirCurriculo(id);
+            await excluirCurriculo(curriculo.id);
             toast.success("Curriculo excluido com sucesso!");
             router.push("/sistema/paginas/curriculos");
         } catch (error) {
