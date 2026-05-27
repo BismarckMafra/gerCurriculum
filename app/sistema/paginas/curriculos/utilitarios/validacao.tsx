@@ -1,43 +1,24 @@
 import * as yup from "yup";
+import type { CurriculoFormData } from "../types";
 
-export const cadastroSchema = yup.object({
-    // Dados Pessoais
-    nomeCompleto: yup.string()
-        .required("O nome é obrigatório")
-        .min(3, "O nome deve ter pelo menos 3 caracteres")
-        .trim(),
-    idade: yup.string()
-        .required("A idade é obrigatória")
-        .matches(/^\d+$/, "A idade deve ser um número válido"),
-    telefone_celular: yup.string()
-        .required("O telefone/celular é obrigatório")
-        .matches(/^\d{10,11}$/, "O telefone/celular deve conter apenas números e ter 10 ou 11 dígitos"),
-    email: yup.string()
-        .required("O email é obrigatório")
-        .email("O formato do email é inválido")
-        .lowercase()
-        .trim(),
-    endereco: yup.string()
-        .required("O endereço é obrigatório")
-        .min(5, "O endereço deve ter pelo menos 5 caracteres")
-        .trim(),
-    resumo: yup.string()
-        .max(600, "O resumo não deve exceder 600 caracteres")
-        .trim(),
-    valorPretendido: yup.number()
-        .required("O valor pretendido é obrigatório")
-        .positive("O valor pretendido deve ser um número positivo")
-        .typeError("O valor pretendido deve ser um número válido"),
-    profissao: yup.string()
-        .required("A profissão é obrigatória")
-        .min(3, "A profissão deve ter pelo menos 3 caracteres")
-        .trim(),
-    imagem: yup.string()
-        .required("A imagem é obrigatória")
-        .url("A imagem deve ser uma URL válida"),
-
-
+const experienciaSchema = yup.object({
+    cargo: yup.string().required("O cargo e obrigatorio").trim().defined(),
+    empresa: yup.string().required("A empresa e obrigatoria").trim().defined(),
+    periodo: yup.string().required("O periodo e obrigatorio").trim().defined(),
+    descricao: yup.string().required("A descricao e obrigatoria").trim().defined(),
 });
 
-// Inferência automática do tipo para uso no useForm
-export type cadastroDados = yup.InferType<typeof cadastroSchema>;
+export const cadastroSchema: yup.ObjectSchema<CurriculoFormData> = yup.object({
+    nomeCompleto: yup.string().required("O nome e obrigatorio").min(3, "O nome deve ter pelo menos 3 caracteres").trim().defined(),
+    email: yup.string().required("O email e obrigatorio").email("O formato do email e invalido").lowercase().trim().defined(),
+    telefone: yup.string().required("O telefone e obrigatorio").matches(/^\(\d{2}\)\s\d{4,5}-\d{4}$/, "O telefone deve estar no formato (XX) XXXXX-XXXX").defined(),
+    cpf: yup.string().required("O CPF e obrigatorio").matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, "O CPF deve estar no formato XXX.XXX.XXX-XX").defined(),
+    profissao: yup.string().required("O cargo desejado e obrigatorio").min(3, "O cargo deve ter pelo menos 3 caracteres").trim().defined(),
+    resumoProfissional: yup.string().required("O resumo profissional e obrigatorio").min(20, "O resumo profissional deve ter pelo menos 20 caracteres").max(600, "O resumo profissional nao deve exceder 600 caracteres").trim().defined(),
+    formacao: yup.array().of(yup.string().required()).min(1, "E necessario adicionar pelo menos uma formacao").defined(),
+    experiencia: yup.array().of(experienciaSchema).min(1, "E necessario adicionar pelo menos uma experiencia profissional").defined(),
+    habilidades: yup.array().of(yup.string().required()).min(1, "E necessario adicionar pelo menos uma habilidade").defined(),
+    imagem: yup.string().default("").defined(),
+});
+
+export type cadastroDados = CurriculoFormData;

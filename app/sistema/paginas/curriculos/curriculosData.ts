@@ -1,11 +1,23 @@
 export type Curriculo = {
   id: number;
   nomeCompleto: string;
+
   idade: string;
   resumo: string;
   valorPretendido: number;
   email: string;
-  imagem: string;
+  telefone: string;
+  profissao: string;
+  resumoProfissional: string;
+  formacao: string[];
+  experiencia: {
+    cargo: string;
+    empresa: string;
+    periodo: string;
+    descricao: string;
+  }[];
+  habilidades: string[];
+  imagem?: string;
 };
 
 export const CURRICULOS: Curriculo[] = [
@@ -52,6 +64,6 @@ export const CURRICULOS: Curriculo[] = [
     resumo: "Especialista em recursos humanos com foco em recrutamento, desenvolvimento e retenção de talentos.",
     valorPretendido: 6800,
     email: "elisa.nogueira@example.com",
-    imagem: "/Logo.jpg",
+    imagem: "/Logo.jpg"
   },
 ];
