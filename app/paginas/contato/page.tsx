@@ -1,7 +1,7 @@
 export default function ContatoPage() {
   return (
     <section className="mx-auto max-w-5xl px-6 py-12 bg-cyan-50">
-      <h1 className="text-3xl md:text-4xl font-semibold text-amber-900 text-center mb-10 bg-amber-200 p-4 rounded-lg">
+      <h1 className="mt-40 text-3xl md:text-4xl font-semibold text-amber-900 text-center mb-10 bg-amber-200 p-4 rounded-lg">
         Entre em Contato
       </h1>
 
