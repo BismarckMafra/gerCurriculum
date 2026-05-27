@@ -1,74 +1,32 @@
-"use client";
-
-import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { toast, Toaster } from "sonner";
-import { listarCurriculos } from "@/services/curriculosService";
-import type { Curriculo } from "./types";
-
-export default function PaginaCurriculo() {
-    const [curriculos, setCurriculos] = useState<Curriculo[]>([]);
-    const [busca, setBusca] = useState("");
-    const [carregando, setCarregando] = useState(true);
-
-    useEffect(() => {
-        async function carregarCurriculos() {
-            try {
-                const dados = await listarCurriculos();
-                setCurriculos(dados);
-            } catch (error) {
-                console.error(error);
-                toast.error("Nao foi possivel carregar os curriculos do Firestore.");
-            } finally {
-                setCarregando(false);
-            }
-        }
-
-        carregarCurriculos();
-    }, []);
-
-    const curriculosFiltrados = useMemo(() => {
-        const termo = busca.trim().toLowerCase();
-
-        if (!termo) {
-            return curriculos;
-        }
-
-        return curriculos.filter((curriculo) =>
-            curriculo.nomeCompleto.toLowerCase().includes(termo) ||
-            curriculo.profissao.toLowerCase().includes(termo)
-        );
-    }, [busca, curriculos]);
+import Image from "next/image"
+import Link from "next/link"
+import { CURRICULOS } from "./curriculosData"
 
     return (
         <section className="mx-auto max-w-5xl px-6 py-12 bg-cyan-50">
             <h1 className="text-3xl mt-40 md:text-4xl font-semibold text-amber-900 text-center mb-6 bg-amber-200 p-4 rounded-lg">
                 Lista de Curriculos
             </h1>
-
-            <div className="mb-8 flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
-                <input
-                    value={busca}
-                    onChange={(event) => setBusca(event.target.value)}
-                    placeholder="Pesquisar por nome ou cargo"
-                    className="w-full md:max-w-md px-4 py-3 border-2 border-amber-200 rounded-lg bg-white text-black"
-                />
-                <Link
-                    href="/sistema/paginas/curriculos/novo"
-                    className="text-center bg-amber-900 text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors duration-300"
-                >
-                    Novo curriculo
-                </Link>
-            </div>
-
-            {carregando ? (
-                <div className="bg-white rounded-2xl shadow-md p-8 text-center text-amber-900">
-                    Carregando curriculos...
-                </div>
-            ) : curriculosFiltrados.length === 0 ? (
-                <div className="bg-white rounded-2xl shadow-md p-8 text-center">
-                    <p className="text-amber-900 font-semibold">Nenhum curriculo encontrado.</p>
-                    <p className="text-gray-600 mt-2">Cadastre um novo curriculo ou ajuste a pesquisa.</p>
+            {CURRICULOS.map((curriculo) => (
+                <div key={curriculo.id}
+                    className="bg-amber-200-300 rounded-2xl shadow-sm p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 mb-6">
+                    <div className="w-24 h-24 flex items-center justify-center bg-gray-100 rounded-xl">
+                        <Image src={curriculo.imagem} alt={curriculo.nomeCompleto} width={50} height={50}
+                            className="object-contain transition-transform duration-300 hover:scale-110"
+                        />
+                    </div>
+                    <div className="flex-1 text-center md:text-left">
+                        <h3 className="text-xl font-semibold text-amber-900 mb-2"> {curriculo.nomeCompleto} </h3>
+                        <p className="text-amber-500 text-sm mb-1"> {curriculo.idade} </p>
+                        <p className="text-lg font-bold text-amber-900 mt-2"> R$ {curriculo.valorPretendido.toFixed(2)} </p>
+                    </div>
+                    <div className="w-full md:w-auto">
+                        <Link
+                            className="w-full md:w-auto bg-amber-900 text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors"
+                            href={`/sistema/paginas/curriculos/${curriculo.id}`}>
+                            Ver detalhes do currículo
+                        </Link>
+                    </div>
                 </div>
             ) : (
                 <div className="space-y-6">

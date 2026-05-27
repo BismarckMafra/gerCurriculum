@@ -53,11 +53,12 @@ export default function Header() {
                                 <X size={24} />
                             </button>
                             <nav className="text-amber-950 flex flex-col space-y-4">
-                                <Link href="/" className="text-amber-950" onClick={fecharMenu}>Home</Link>
-                                <Link href="/paginas/contato" className="text-amber-950" onClick={fecharMenu}>Contatos</Link>
-                                <Link href="/paginas/sobre" className="text-amber-950" onClick={fecharMenu}>Sobre a empresa</Link>
-                                <Link href="/sistema/paginas/curriculos" className="text-amber-950" onClick={fecharMenu}>Lista de Curriculos</Link>
-                                <Link href="/sistema/paginas/curriculos/novo" className="text-amber-950" onClick={fecharMenu}>Novo curriculo</Link>
+
+                                <a href="/" className="text-amber-950" onClick={fecharMenu}>Home</a>
+                                <a href="/paginas/contato" className="text-amber-950" onClick={fecharMenu}>Contatos</a>
+                                <a href="/paginas/sobre" className="text-amber-950" onClick={fecharMenu}>Sobre a empresa</a>
+                                <a href="/sistema/paginas/curriculos" className="text-amber-950" onClick={fecharMenu}>Lista de Currículos</a>
+                                <a href="/sistema/paginas/curriculos/buscar" className="text-amber-950" onClick={fecharMenu}>Currículo</a>
                             </nav>
                         </div>
                     </div>
