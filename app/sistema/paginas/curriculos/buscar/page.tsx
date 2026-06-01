@@ -1,21 +1,41 @@
 "use client"
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { curriculo } from "../curriculosData";
+import { listarCurriculos } from "@/services/curriculosService";
+import type { curriculo } from "../types";
 
 export default function BuscarCurriculo() {
   const [query, setQuery] = useState("");
   const [submitted, setSubmitted] = useState("");
+  const [curriculos, setCurriculos] = useState<curriculo[]>([]);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function carregarCurriculos() {
+      try {
+        const dados = await listarCurriculos();
+        setCurriculos(dados);
+      } catch (error) {
+        console.error(error);
+        setErro("Erro ao carregar currículos do Firebase. Tente novamente mais tarde.");
+      } finally {
+        setCarregando(false);
+      }
+    }
+
+    carregarCurriculos();
+  }, []);
 
   const resultados = useMemo(() => {
     const termo = submitted.trim().toLowerCase();
     if (!termo) return [];
-    return curriculo.filter((item) =>
+    return curriculos.filter((item) =>
       item.nomeCompleto.toLowerCase().includes(termo)
     );
-  }, [submitted]);
+  }, [submitted, curriculos]);
 
   return (
     <section className="mx-auto max-w-4xl px-6 pt-32 pb-10">
@@ -61,7 +81,15 @@ export default function BuscarCurriculo() {
       </div>
 
       <div className="mt-8 space-y-6">
-        {submitted === "" ? (
+        {carregando ? (
+          <div className="rounded-3xl border border-amber-100 bg-white p-8 shadow-sm">
+            <p className="text-sm text-slate-600">Carregando currículos do Firebase...</p>
+          </div>
+        ) : erro ? (
+          <div className="rounded-3xl border border-amber-100 bg-white p-8 shadow-sm">
+            <p className="text-sm text-red-600">{erro}</p>
+          </div>
+        ) : submitted === "" ? (
           <div className="rounded-3xl border border-amber-100 bg-white p-8 shadow-sm">
             <p className="text-sm text-slate-600">
               Digite um nome e clique em Buscar para ver o currículo do candidato.
@@ -108,25 +136,25 @@ export default function BuscarCurriculo() {
                   <div className="mt-5 grid gap-4 sm:grid-cols-2">
                     <div className="rounded-3xl border border-amber-100 bg-white p-4">
                       <p className="text-xs uppercase tracking-[0.2em] text-amber-900/80">
-                        Idade
+                        Profissão
                       </p>
                       <p className="mt-2 text-sm font-semibold text-slate-900">
-                        {item.idade}
+                        {item.profissao}
                       </p>
                     </div>
                     <div className="rounded-3xl border border-amber-100 bg-white p-4">
                       <p className="text-xs uppercase tracking-[0.2em] text-amber-900/80">
-                        Pretensão salarial
+                        E-mail
                       </p>
                       <p className="mt-2 text-sm font-semibold text-slate-900">
-                        R$ {item.valorPretendido.toFixed(2)}
+                        {item.email}
                       </p>
                     </div>
                   </div>
                   <div className="mt-5 rounded-3xl border border-amber-100 bg-white p-5">
                     <p className="text-xs uppercase tracking-[0.2em] text-amber-900/80">Resumo profissional</p>
                     <p className="mt-3 text-sm leading-7 text-slate-700">
-                      {item.resumo}
+                      {item.resumoProfissional}
                     </p>
                   </div>
                 </div>

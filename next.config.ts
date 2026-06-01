@@ -4,8 +4,12 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
+        protocol: "http",
+        hostname: "**",
+      },
+      {
         protocol: "https",
-        hostname: "randomuser.me",
+        hostname: "**",
       },
     ],
   },
@@ -28,7 +32,6 @@ const nextConfig: NextConfig = {
       },
     ];
   }
-  /* config options here */
 };
 
 export default nextConfig;
